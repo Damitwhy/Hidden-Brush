@@ -7,4 +7,4 @@ from django.urls import reverse_lazy
 # Create your views here.
 def home(request):
     # Renders the home page template
-    return render(request, 'core/home.html')
+    return render(request, 'core/home.html') 
