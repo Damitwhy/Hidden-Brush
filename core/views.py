@@ -9,7 +9,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 
 
-# Create your views here.
 def home(request):
     # Renders the home page template
-    return render(request, 'core/home.html') 
+    return render(request, 'core/home.html')
