@@ -1,0 +1,1 @@
+web: gunicorn na_share.wsgi

@@ -87,7 +87,7 @@ MIDDLEWARE = [
     # Custom middleware   
     
     'allauth.account.middleware.AccountMiddleware',
-    'core.middleware.AdminAccessMiddleware',    
+    # 'core.middleware.AdminAccessMiddleware',    
 ]
 
 ROOT_URLCONF = 'hidden_brush.urls'
