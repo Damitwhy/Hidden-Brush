@@ -1,0 +1,15 @@
+asgiref==3.8.1
+blinker==1.8.2
+click==8.1.7
+dj-database-url==2.2.0
+Django==5.0.7
+django-allauth==64.0.0
+django-summernote==0.8.20.0
+Flask==3.0.3
+gunicorn==22.0.0
+itsdangerous==2.2.0
+psycopg2==2.9.9
+sqlparse==0.5.1
+Werkzeug==3.0.3
+whitenoise==6.7.0
+beautifulsoup4
