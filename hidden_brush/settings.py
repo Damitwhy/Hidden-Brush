@@ -19,7 +19,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
-TIME_ZONE = 'GB'
+
 
 
 
@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'cloudinary_storage',
+    'cloudinary',
     # Local apps
     'core',
 ]
@@ -175,7 +177,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'GB'
 
 USE_I18N = True
 
