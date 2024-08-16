@@ -7,4 +7,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('image/<int:image_id>/', views.image_detail, name='image_detail'),
     path('gallery/', views.gallery, name='gallery'),
+    # CRUD views for Image model
+    path('add/', views.add_image, name='add_image'),
+    path('update/<int:image_id>/', views.update_image, name='update_image'),
+    path('delete/<int:image_id>/', views.delete_image, name='delete_image'),
 ]

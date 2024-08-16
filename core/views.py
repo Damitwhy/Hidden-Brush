@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -8,8 +8,8 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from .models import Comment
-from .forms import CommentForm
+from .models import Comment, Image
+from .forms import CommentForm, ImageForm
 from django.conf import settings
 import os
 
@@ -51,3 +51,37 @@ def image_detail(request, image_id):
     else:
         form = CommentForm()
     return render(request, 'image_detail.html', {'image_id': image_id, 'comments': comments, 'form': form})
+
+# CRUD views for Image model
+@login_required
+def add_image(request):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.save(commit=False)
+            image.user = request.user
+            image.save()
+            return redirect('gallery')
+    else:
+        form = ImageForm()
+    return render(request, 'core/add_image.html', {'form': form})
+
+@login_required
+def update_image(request, image_id):
+    image = get_object_or_404(Image, id=image_id, user=request.user)
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES, instance=image)
+        if form.is_valid():
+            form.save()
+            return redirect('gallery')
+    else:
+        form = ImageForm(instance=image)
+    return render(request, 'core/update_image.html', {'form': form})
+
+@login_required
+def delete_image(request, image_id):
+    image = get_object_or_404(Image, id=image_id, user=request.user)
+    if request.method == 'POST':
+        image.delete()
+        return redirect('gallery')
+    return render(request, 'core/delete_image.html', {'image': image})
