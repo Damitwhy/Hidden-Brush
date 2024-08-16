@@ -19,6 +19,7 @@
       rel="stylesheet"
     />
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Hidden Brush</title>
 
     <link rel="stylesheet" href="static/css/styles.css" />
@@ -79,6 +80,7 @@
               href=""
               class="btn btn-outline-dark"
               target="_blank"
+              style="border-radius: 25%;"
               >Login</a
             >
           </div>
@@ -98,7 +100,7 @@
                   <li></li>
                   <li></li>
               </ul>
-              <a href="" class="btn btn-outline-dark mb-3">View Gallery</a>
+              <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3">View Gallery</a>
           </div>
           <div class="col-sm-6">
               <img src="static/images/1.png" class="img-fluid " alt="">
@@ -122,7 +124,7 @@
                   <li></li>
                   <li></li>
               </ul>
-              <a href="" class="btn btn-outline-dark mb-3" >View Gallery</a>
+              <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3" >View Gallery</a>
               
           </div>
           </div>

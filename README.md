@@ -1,9 +1,14 @@
 
-# Hidden Brush
+# 🎨 Hidden Brush
 
 Hidden Brush is a collaborative art gallery web application where users can view, like, and comment on artwork. This project is built using Django, Python, JavaScript, HTML, and CSS, and it demonstrates various features including user authentication, comment management, and interactive galleries.
 
-## Table of Contents
+![Project Status](https://img.shields.io/badge/status-active-brightgreen)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![Django](https://img.shields.io/badge/django-3.2%2B-green)
+![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
+
+## 📖 Table of Contents
 
 - [Project Overview](#project-overview)
 - [Wireframe](#wireframe)
@@ -16,11 +21,11 @@ Hidden Brush is a collaborative art gallery web application where users can view
 - [Credit](#credit)
 - [Contact](#contact)
 
-## Project Overview
+## 🖼 Project Overview
 
 Hidden Brush allows users to explore various artworks, interact with them by liking and commenting, and manage their comments. The application supports user authentication, ensuring that only registered users can engage with the content. The project is divided into several apps for modular development and easy maintenance.
 
-## Wireframe
+## 📝 Wireframe
 
 The wireframe below outlines the basic structure of the Hidden Brush application:
 
@@ -28,20 +33,18 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 ![Landing/Home Page](static/images/Home-wire.png)
 
 ### Login Page
+- **Login/Register Page**: Allows users to log in or create a new account.
 ![Login Page](static/images/login-wire.png)
 
 ### Gallery Page
+- **Home Page/Gallery Page**: Displays a collection of artworks in a grid format. Each artwork has a like button and a comment section.
 ![Gallery Page](static/images/gallery-wire.png)
 
 ### Comment Page
+- **Login/Register Page**: Allows users to log in or create a new account.
 ![Comment Page](static/images/comment-wire.png)
 
-- **Home Page/Gallery Page**: Displays a collection of artworks in a grid format. Each artwork has a like button and a comment section.
-- **Login/Register Page**: Allows users to log in or create a new account.
-- **Comment Section**: Below each artwork, users can add, view, edit, and delete comments.
-- **Admin Dashboard**: Admins can manage users, artworks, and comments.
-
-## Features
+## ✨Features
 
 - **User Authentication:** Secure login and registration for users.
  ### Login Page and Registration Form
@@ -59,15 +62,20 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 - **Responsive Design:** The application is accessible on desktop ,mobile  Tablet and Laptop devices.
  ### Responsive in all Devices
  ![Responsive Design](static/images/)
- 
-## Technology Stack
 
-- **Backend:** Django (Python)
-- **Frontend:** HTML, CSS, JavaScript
-- **Database:** SQLite ,PostgreSQL
-- **Version Control:** Git
+ ## 🛠 Technology Stack
 
-## Installation
+| Technology | Description |
+|------------|-------------|
+| **Django** | Web framework used for developing the backend and managing the database. |
+| **Python** | Programming language used for the backend logic. |
+| **JavaScript** | For dynamic front-end interactions. |
+| **HTML5 & CSS3** | Markup and styling for the frontend. |
+| **SQLite** | Default database for development. |
+| **Git** | Version control system used for code management. |
+
+
+## 🚀Installation
 
 ### Prerequisites
 
@@ -91,7 +99,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 
 - Access the application (our browser url)
 
-## Usage
+## 💻 Usage
 ### User Interaction
 - Registration: New users can register by providing a username, email, and password.
 - Login: Registered users can log in to access all features.
@@ -99,7 +107,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 - Like Artworks: Logged-in users can like their favorite pieces.
 - Comment on Artworks: Logged-in users can add, edit, and delete comments on artworks.
 
-## Contributing
+## 🤝 Contributing
 - Contributions are welcome! Please follow these steps to contribute:
 
 - Fork the repository.
@@ -110,9 +118,9 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 
 - Please ensure your code follows the project’s style guidelines and passes all tests.
 
-## Contact
+## 📬 Contact
 - For any inquiries or issues, please contact:
 
-Project Maintainer: Admin
-Email: admin@email.com
+-Project Maintainer: Admin
+-Email: admin@email.com
 

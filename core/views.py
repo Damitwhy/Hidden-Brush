@@ -14,33 +14,32 @@ from django.conf import settings
 import os
 
 
+
 from django.shortcuts import render
 from django.urls import reverse
 import os
 from django.conf import settings
 
 def gallery(request):
-    image_dir = os.path.join(settings.STATIC_ROOT, 'images')
-    if not os.path.exists(image_dir):
-        return render(request, 'core/gallery.html', {'images': []})
+    return render(request, 'core/gallery.html')
 
-    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
-    image_urls = [
-        {
-            'name': image,
-            'url': reverse('image_detail', kwargs={'image_id': image})
-        }
-        for image in images
-    ]
-    return render(request, 'core/gallery.html', {'images': image_urls})
-    
+
 def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
 
+
 @login_required
 def image_detail(request, image_id):
-    comments = Comment.objects.filter(image_id=image_id)
+    # Get all comments on the image, excluding the logged-in user's comments
+    other_comments = Comment.objects.filter(image_id=image_id).exclude(user=request.user).order_by('created_at')
+
+    #Get the logged-in user's comments
+    user_comments = Comment.objects.filter(image_id=image_id, user=request.user).order_by('created_at')
+
+    #Combine the comments
+    comments = list(other_comments) + list(user_comments)
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
