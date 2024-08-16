@@ -31,13 +31,16 @@ def home(request):
 
 @login_required
 def image_detail(request, image_id):
+    # Fetch the image object associated with the image_id
+    image = get_object_or_404(Image, id=image_id)
+
     # Get all comments on the image, excluding the logged-in user's comments
     other_comments = Comment.objects.filter(image_id=image_id).exclude(user=request.user).order_by('created_at')
 
-    #Get the logged-in user's comments
+    # Get the logged-in user's comments
     user_comments = Comment.objects.filter(image_id=image_id, user=request.user).order_by('created_at')
 
-    #Combine the comments
+    # Combine the comments
     comments = list(other_comments) + list(user_comments)
 
     if request.method == 'POST':
@@ -50,7 +53,14 @@ def image_detail(request, image_id):
             return redirect('image_detail', image_id=image_id)
     else:
         form = CommentForm()
-    return render(request, 'image_detail.html', {'image_id': image_id, 'comments': comments, 'form': form})
+
+    # Pass the image, comments, and form to the template
+    return render(request, 'image_detail.html', {
+        'image': image,
+        'comments': comments,
+        'form': form
+    })
+
 
 # CRUD views for Image model
 @login_required
