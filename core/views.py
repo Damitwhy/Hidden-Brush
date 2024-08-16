@@ -25,7 +25,15 @@ def home(request):
 
 @login_required
 def image_detail(request, image_id):
-    comments = Comment.objects.filter(image_id=image_id)
+    # Get all comments on the image, excluding the logged-in user's comments
+    other_comments = Comment.objects.filter(image_id=image_id).exclude(user=request.user).order_by('created_at')
+
+    #Get the logged-in user's comments
+    user_comments = Comment.objects.filter(image_id=image_id, user=request.user).order_by('created_at')
+
+    #Combine the comments
+    comments = list(other_comments) + list(user_comments)
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
