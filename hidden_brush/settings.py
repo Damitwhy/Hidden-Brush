@@ -6,7 +6,7 @@ import os
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
-    
+
 # Import Sytem module for testing
 import sys
 
@@ -20,9 +20,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 
 
-
-
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -30,13 +27,13 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost','.ws.codeinstitute-ide.net','.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost',
+                 '.ws.codeinstitute-ide.net', '.herokuapp.com']
 
 # Specify the custom user model
 AUTH_USER_MODEL = 'core.User'
-
 
 
 # Application definition
@@ -86,10 +83,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    # Custom middleware   
-    
+    # Custom middleware
+
     'allauth.account.middleware.AccountMiddleware',
-    # 'core.middleware.AdminAccessMiddleware',    
+    # 'core.middleware.AdminAccessMiddleware',
 ]
 
 ROOT_URLCONF = 'hidden_brush.urls'
@@ -119,9 +116,12 @@ def is_admin_or_superuser(user):
 
 
 SUMMERNOTE_CONFIG = {
-    'attachment_require_authentication': True,  # Ensure only authenticated users can upload
-    'attachment_require_permissions': (is_admin_or_superuser,),  # Custom permission check
-    'disable_upload': True,  # Enable uploads, but restrict them with the custom permission check
+    # Ensure only authenticated users can upload
+    'attachment_require_authentication': True,
+    # Custom permission check
+    'attachment_require_permissions': (is_admin_or_superuser,),
+    # Enable uploads, but restrict them with the custom permission check
+    'disable_upload': True,
     'summernote': {
         'toolbar': [
             ['style', ['style']],
@@ -150,7 +150,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "http://localhost:8000",
 ]
-
 
 
 # Password validation
