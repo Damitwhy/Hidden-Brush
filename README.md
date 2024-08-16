@@ -44,11 +44,22 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 ## Features
 
 - **User Authentication:** Secure login and registration for users.
+ ### Login Page and Registration Form
+ ![login page](static/images/)
+ ![Registration page](siatic/images/)
 - **Gallery Display:** View a collection of artworks in a gallery format.
+ ### Gallery Page
+ ![Gallery page](static/images/)
 - **Like and Comment:** Users can like artworks and leave comments.
+ ### Like and Comment Section
+ ![Like and Comment section](static/images/)
 - **Comment Management:** Users can add, view, edit, and delete their comments.
-- **Responsive Design:** The application is accessible on both desktop and mobile devices.
-
+ ### Comment Page
+ ![Comment page](static/images/)
+- **Responsive Design:** The application is accessible on desktop ,mobile  Tablet and Laptop devices.
+ ### Responsive in all Devices
+ ![Responsive Design](static/images/)
+ 
 ## Technology Stack
 
 - **Backend:** Django (Python)
