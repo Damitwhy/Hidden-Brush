@@ -23,8 +23,6 @@ def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
 
-
-@login_required
 @login_required
 def image_detail(request, image_id):
     # Retrieve the image object
@@ -51,8 +49,7 @@ def image_detail(request, image_id):
             comment.save()
             return redirect('image_detail', image_id=image_id)
     else:
-        form = CommentForm()
-    
+        form = CommentForm()    
     # Pass the image_url to the template context
     return render(request, 'core/image_detail.html', {
         'image_id': image_id,
@@ -60,6 +57,7 @@ def image_detail(request, image_id):
         'comments': comments,
         'form': form
     })
+    
 # CRUD views for Image model
 @login_required
 def add_image(request):
