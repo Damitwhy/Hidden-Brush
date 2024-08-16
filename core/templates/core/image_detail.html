@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
     <div class="image-container">
-        <img src="{% static 'images/'|add:image_id|add:'.jpg' %}" alt="Image {{ image_id }}">
+        <img src="{{ image_url }}" alt="Image {{ image_id }}">
     </div>
     <div class="comments">
         <h2>Comments</h2>
