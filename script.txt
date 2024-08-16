@@ -1,0 +1,32 @@
+<script>
+    // JavaScript to handle task completion checkbox interactions
+    document.querySelectorAll('.complete-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const taskId = this.getAttribute('data-task-id'); // Get task ID from the data attribute
+            const isChecked = this.checked; // Determine if the checkbox is checked
+
+            // Send an AJAX POST request to update task completion status
+            fetch(`/tasks/complete/${taskId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}', // Include CSRF token for security
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ complete: isChecked }), // Send the completion status in the request body
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const taskRow = this.closest('.task-row'); // Get the closest task row element
+                    if (isChecked) {
+                        taskRow.classList.add('completed'); // Add 'completed' class if checked
+                    } else {
+                        taskRow.classList.remove('completed'); // Remove 'completed' class if unchecked
+                    }
+                } else {
+                    alert('There was an error updating the task status.'); // Show an error if the update fails
+                }
+            });
+        });
+    });
+</script>
