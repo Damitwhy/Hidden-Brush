@@ -10,7 +10,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from .models import Comment
 from .forms import CommentForm
+from django.conf import settings
+import os
 
+def gallery(request):
+    image_dir = os.path.join(settings.STATIC_ROOT, 'images')
+    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
+    return render(request, 'gallery.html', {'images': images})
 
 def home(request):
     # Renders the home page template
