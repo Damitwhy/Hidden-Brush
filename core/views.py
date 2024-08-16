@@ -13,14 +13,15 @@ from .forms import CommentForm
 from django.conf import settings
 import os
 
+
 def gallery(request):
-    image_dir = os.path.join(settings.STATIC_ROOT, 'images')
-    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
-    return render(request, 'gallery.html', {'images': images})
+    return render(request, 'core/gallery.html')
+
 
 def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
+
 
 @login_required
 def image_detail(request, image_id):
