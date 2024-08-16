@@ -1,9 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Image Detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
     <div class="image-container">
         <img src="{% static 'images/'|add:image_id|add:'.jpg' %}" alt="Image {{ image_id }}">
     </div>
@@ -24,5 +21,4 @@
             <button type="submit">Submit</button>
         </form>
     </div>
-</body>
-</html>
+{% endblock %}
