@@ -13,6 +13,7 @@ Hidden Brush is a collaborative art gallery web application where users can view
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
+- [Credit](#credit)
 - [Contact](#contact)
 
 ## Project Overview
