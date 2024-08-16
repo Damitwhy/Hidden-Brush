@@ -1,14 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Gallery</title>
 </head>
 <body>
+    {% load static %}
     <h1>Gallery</h1>
     <div class="gallery">
         {% for image in images %}
             <div class="image">
-                <a href="{% url 'image_detail' image_id=image|slice:":-4" %}">
+                <a href="{{ image.url }}">{{ image.name }}</a>
                     <img src="{% static 'images/'|add:image %}" alt="Image {{ image }}">
                 </a>
             </div>

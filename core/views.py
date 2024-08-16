@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView, View
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
@@ -13,11 +13,27 @@ from .forms import CommentForm
 from django.conf import settings
 import os
 
+
+from django.shortcuts import render
+from django.urls import reverse
+import os
+from django.conf import settings
+
 def gallery(request):
     image_dir = os.path.join(settings.STATIC_ROOT, 'images')
-    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
-    return render(request, 'gallery.html', {'images': images})
+    if not os.path.exists(image_dir):
+        return render(request, 'core/gallery.html', {'images': []})
 
+    images = [f for f in os.listdir(image_dir) if os.path.isfile(os.path.join(image_dir, f))]
+    image_urls = [
+        {
+            'name': image,
+            'url': reverse('image_detail', kwargs={'image_id': image})
+        }
+        for image in images
+    ]
+    return render(request, 'core/gallery.html', {'images': image_urls})
+    
 def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
