@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
+from cloudinary.models import CloudinaryField
 
 class User(AbstractUser):
     """
