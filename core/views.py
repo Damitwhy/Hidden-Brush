@@ -67,7 +67,7 @@ class LogoutConfirmView(LoginRequiredMixin, View):
         return redirect(reverse_lazy('login'))
 
 
-
+@login_required
 def image_detail(request, image_id):
 
     # Retrieve the image object
