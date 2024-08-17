@@ -1,37 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<<<<<<< HEAD
-{% if user.is_authenticated and user == image.user %}
-<h2>Update Image</h2>
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
-  <div class="form-group update-image-image">
-    <label for="{{ form.image.id_for_label }}">Image</label>
-    {{ form.image }}
-  </div>
-  <div class="form-group update-image-title">
-    <label for="{{ form.title.id_for_label }}">Title</label>
-    {{ form.title }}
-  </div>
-  <div class="form-group update-image-description">
-    <label for="{{ form.description.id_for_label }}">Description</label>
-    {{ form.description }}
-  </div>
-  <button type="submit">Update Image</button>
-</form>
-<a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
-  <i class="fa-regular fa-trash-can"></i>
-</a>
-{% else %}
-<h1>Forbidden</h1>
-<p>You are not authorized to update this image.</p>
-{% endif %}
-{% endblock %}
-=======
-
 <div class="form-container">
     <div class="form-box">
+      {% if user.is_authenticated and user == image.user %}
         <h2>Update Image</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -49,9 +21,16 @@
             </div>
             <button type="submit" class="button btn btn-outline-dark">Update Image</button>
         </form>
+      <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
+  <i class="fa-regular fa-trash-can"></i>
+</a>
+{% else %}
+<h1>Forbidden</h1>
+<p>You are not authorized to update this image.</p>
+{% endif %}
+
     </div>
 </div>
-
 <style>
     .form-container {
         display: flex;
@@ -107,4 +86,4 @@
 </style>
 
 {% endblock %}
->>>>>>> de286b6664a0e104fd187aaf5b21eaad8adba6b6
+
