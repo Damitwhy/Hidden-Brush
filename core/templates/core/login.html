@@ -2,19 +2,85 @@
 {% load static %}
 {% block content %}
 
-<div class="header-bar">
-    <h1>Login</h1>  
+<div class="login-container">
+    <div class="login-box">
+        <div class="header-bar">
+            <h1>Login</h1>  
+        </div>
+
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <input class="button btn btn-outline-dark" type="submit" value="Login">
+            </form>
+        </div>
+
+        <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    </div>
 </div>
 
-<div class="card-body">
-    <form method="POST">
-        {% csrf_token %}
-        {{form.as_p}}
-        <input class="button" type="submit" value="Login">
-    </form>
-    
-</div>
+<style>
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh; 
+        padding-top: 50px; 
+    }
 
-<p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
+    .login-box {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
 
-{% endblock content%}
+    .header-bar h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .card-body {
+        margin-bottom: 20px;
+    }
+
+    .card-body form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .button {
+        border-radius: 25%;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    p {
+        margin-top: 15px;
+        color: #555;
+    }
+
+    p a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    p a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock content %}
