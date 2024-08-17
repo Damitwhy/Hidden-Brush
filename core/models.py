@@ -10,20 +10,24 @@ class User(AbstractUser):
     User model representing a user in the system.
     Attributes:
         is_admin (bool): Indicates whether the user is an admin or not. Default is False.
-    """    
+    """
     is_admin = models.BooleanField(default=False)
 
+
 class Comment(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     image_id = models.IntegerField()
     text = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'Comment by {self.user.username} on image {self.image_id}'
-    
+
+
 class Image(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     image = CloudinaryField('image')
     title = models.CharField(max_length=255)
     description = models.TextField()
@@ -41,5 +45,3 @@ class Image(models.Model):
 
     def get_likes_count(self):
         return Like.objects.filter(image_id=self.id).count()
-    
-    

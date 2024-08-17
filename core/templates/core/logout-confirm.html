@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<a class="backbtn" href="{% url 'home' %}">Go Back</a>
+
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to logout?</p>
+    <input class="logoutbtn" type="submit" value="Logout"/>
+</form>
+
+{% endblock content %}
