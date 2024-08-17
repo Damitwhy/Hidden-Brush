@@ -25,12 +25,14 @@ def home(request):
 
 @login_required
 def image_detail(request, image_id):
+
     # Retrieve the image object
     image = get_object_or_404(Image, id=image_id)
     
     # Get the Cloudinary URL
     image_url = image.image.url
     
+
     # Get all comments on the image, excluding the logged-in user's comments
     other_comments = Comment.objects.filter(image_id=image_id).exclude(user=request.user).order_by('created_at')
 
@@ -49,6 +51,7 @@ def image_detail(request, image_id):
             comment.save()
             return redirect('image_detail', image_id=image_id)
     else:
+
         form = CommentForm()    
     # Pass the image_url to the template context
     return render(request, 'core/image_detail.html', {
@@ -58,6 +61,7 @@ def image_detail(request, image_id):
         'form': form
     })
     
+
 # CRUD views for Image model
 @login_required
 def add_image(request):
