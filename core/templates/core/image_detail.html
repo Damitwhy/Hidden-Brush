@@ -168,7 +168,7 @@
         <h2>Leave a Comment</h2>    
         <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
     </div>
->>>>>>> de286b6664a0e104fd187aaf5b21eaad8adba6b6
+
     {% endif %}
 </div>
 <div class="comments">
@@ -178,7 +178,7 @@
         <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
         <p><em>{{ comment.created_at }}</em></p>
     </div>
-<<<<<<< HEAD
+
     {% endfor %}
 </div>
 {% if user.is_authenticated %}
@@ -213,7 +213,4 @@
 
 
 {% endblock %}
-=======
-    
-{% endblock %}
->>>>>>> de286b6664a0e104fd187aaf5b21eaad8adba6b6
+
