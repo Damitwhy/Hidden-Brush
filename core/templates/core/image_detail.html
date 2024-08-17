@@ -31,5 +31,8 @@
         <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
     </div>
     {% endif %}
+    <div class="back-link">
+        <a href="{% url 'gallery' %}" class="btn btn-outline-dark" style="border-radius: 25%;">Back to Gallery</a>
+    </div>
     
 {% endblock %}
