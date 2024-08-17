@@ -21,11 +21,11 @@ Hidden Brush is a collaborative art gallery web application where users can view
 - [Credit](#credit)
 - [Contact](#contact)
 
-## 🖼 Project Overview
+## 🖼Project Overview
 
 Hidden Brush allows users to explore various artworks, interact with them by liking and commenting, and manage their comments. The application supports user authentication, ensuring that only registered users can engage with the content. The project is divided into several apps for modular development and easy maintenance.
 
-## 📝 Wireframe
+## 📝Wireframe
 
 The wireframe below outlines the basic structure of the Hidden Brush application:
 
@@ -63,7 +63,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
  ### Responsive in all Devices
  ![Responsive Design](static/images/)
 
- ## 🛠 Technology Stack
+ ## 🛠Technology Stack
 
 | Technology | Description |
 |------------|-------------|
@@ -99,7 +99,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 
 - Access the application (our browser url)
 
-## 💻 Usage
+## 💻Usage
 ### User Interaction
 - Registration: New users can register by providing a username, email, and password.
 - Login: Registered users can log in to access all features.
@@ -107,7 +107,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 - Like Artworks: Logged-in users can like their favorite pieces.
 - Comment on Artworks: Logged-in users can add, edit, and delete comments on artworks.
 
-## 🤝 Contributing
+## 🤝Contributing
 - Contributions are welcome! Please follow these steps to contribute:
 
 - Fork the repository.
@@ -118,7 +118,7 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 
 - Please ensure your code follows the project’s style guidelines and passes all tests.
 
-## 📬 Contact
+## 📬Contact
 - For any inquiries or issues, please contact:
 
 -Project Maintainer: Admin
