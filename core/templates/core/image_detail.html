@@ -13,6 +13,7 @@
             </div>
         {% endfor %}
     </div>
+    {% if user.is_authenticated %}
     <div class="comment-form">
         <h2>Leave a Comment</h2>
         <form method="post">
@@ -24,4 +25,11 @@
             <button type="submit">Submit</button>
         </form>
     </div>
+    {% else %}
+    <div class="comment-form">
+        <h2>Leave a Comment</h2>    
+        <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
+    </div>
+    {% endif %}
+    
 {% endblock %}
