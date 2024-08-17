@@ -1,4 +1,5 @@
 import os
+import json
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -14,9 +15,8 @@ from .forms import CommentForm, ImageForm, CustomUserCreationForm
 from .models import Comment, Image
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-import json
 
 
 def gallery(request):
@@ -126,7 +126,10 @@ def add_image(request):
 
 @login_required
 def update_image(request, image_id):
-    image = get_object_or_404(Image, id=image_id, user=request.user)
+    image = get_object_or_404(Image, id=image_id)
+    if image.user != request.user:
+        return HttpResponseForbidden("You are not authorized to update this image.")
+    
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES, instance=image)
         if form.is_valid():
@@ -135,12 +138,15 @@ def update_image(request, image_id):
             return redirect('gallery')
     else:
         form = ImageForm(instance=image)
-    return render(request, 'core/update_image.html', {'form': form})
+    return render(request, 'core/update_image.html', {'form': form, 'image': image})
 
 
 @login_required
 def delete_image(request, image_id):
-    image = get_object_or_404(Image, id=image_id, user=request.user)
+    image = get_object_or_404(Image, id=image_id)
+    if image.user != request.user:
+        return HttpResponseForbidden("You are not authorized to delete this image.")
+    
     if request.method == 'POST':
         image.delete()
         messages.success(request, 'Image deleted successfully.')

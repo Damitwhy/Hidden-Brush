@@ -3,7 +3,7 @@
 {% block content %}
 <div class="form-container">
     <div class="form-box">
-      {% if user.is_authenticated and user == image.user %}
+        {% if user.is_authenticated and user == image.user %}
         <h2>Update Image</h2>
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
@@ -21,14 +21,13 @@
             </div>
             <button type="submit" class="button btn btn-outline-dark">Update Image</button>
         </form>
-      <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
-  <i class="fa-regular fa-trash-can"></i>
-</a>
-{% else %}
-<h1>Forbidden</h1>
-<p>You are not authorized to update this image.</p>
-{% endif %}
-
+        <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
+            <i class="fa-regular fa-trash-can"></i>
+        </a>
+        {% else %}
+        <h1>Forbidden</h1>
+        <p>You are not authorized to update this image.</p>
+        {% endif %}
     </div>
 </div>
 <style>
@@ -36,7 +35,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        min-height: 100vh; /* Full height to center the content */
+        min-height: 100vh;
+        /* Full height to center the content */
         padding-top: 50px;
         padding-bottom: 50px;
     }
@@ -84,6 +84,4 @@
         color: #fff;
     }
 </style>
-
 {% endblock %}
-
