@@ -2,8 +2,8 @@
 {% load static %}
 {% block content %}
 <div class="info-top">
-    <a href="{% url 'home' %}" target="_blank" class="btn btn-outline-dark">Home</a>
-    <a href="#" target="_blank" class="btn btn-outline-dark">Logout</a>
+    <a href="{% url 'home' %}" target="_self" class="btn btn-outline-dark">Home</a>
+    <a href="#" target="_self" class="btn btn-outline-dark">Logout</a>
 </div>
 <div class="gallery">
     <section class="text-center text-dark mt-3">
@@ -16,10 +16,10 @@
             <h3>{{ image.title }}</h3>
             <p>{{ image.description }}</p>
             <div class="btn-group">
-                <a href="#" target="_blank" class="btn btn-outline-dark">
+                <a href="#" target="_self" class="btn btn-outline-dark">
                     <i class="fa-regular fa-heart"></i>
                 </a>
-                <a href="{% url 'image_detail' image.id %}" target="_blank" class="btn btn-outline-dark">
+                <a href="{% url 'image_detail' image.id %}" target="_self" class="btn btn-outline-dark">
                     <i class="fa-regular fa-comment"></i>
                 </a>
             </div>
