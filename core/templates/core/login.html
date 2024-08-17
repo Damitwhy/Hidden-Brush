@@ -18,6 +18,15 @@
 
         <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
     </div>
+  
+<div class="card-body">
+    <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input class="button" type="submit" value="Login">
+        <input type="hidden" name="next" value="{{ request.META.HTTP_REFERER }}">
+    </form>
+    
 </div>
 
 <style>
