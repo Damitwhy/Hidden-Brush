@@ -37,6 +37,7 @@
         </div>
         {% endif %}
     </div>
+
 </div>
 
 <style>
@@ -129,4 +130,37 @@
     }
 </style>
 
+{% endblock %}
+
+    <div class="comments">
+        <h2>Comments</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
+                <p><em>{{ comment.created_at }}</em></p>
+            </div>
+        {% endfor %}
+    </div>
+    {% if user.is_authenticated %}
+    <div class="comment-form">
+        <h2>Leave a Comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group image-detail-comment">
+                <label for="{{ form.text.id_for_label }}">Comment</label>
+                {{ form.text }}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    {% else %}
+    <div class="comment-form">
+        <h2>Leave a Comment</h2>    
+        <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
+    </div>
+    {% endif %}
+    <div class="back-link">
+        <a href="{% url 'gallery' %}" class="btn btn-outline-dark" style="border-radius: 25%;">Back to Gallery</a>
+    </div>
+    
 {% endblock %}
