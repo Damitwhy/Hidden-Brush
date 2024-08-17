@@ -41,7 +41,7 @@
       <h2>Hidden Brush</h2>
       <p><b>Home of excellence.</b></p>
       
-        <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3">Gallery</a>
+        <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3" style="border-radius: 25%;">Gallery</a>
         {% if user.is_authenticated %}
         <a href="{% url 'logout-confirm' %}" class="btn btn-outline-dark" target="_self"
           style="border-radius: 25%;">Logout</a>

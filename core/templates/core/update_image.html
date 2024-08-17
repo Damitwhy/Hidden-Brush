@@ -21,9 +21,11 @@
             </div>
             <button type="submit" class="button btn btn-outline-dark">Update Image</button>
         </form>
+        <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
         <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
             <i class="fa-regular fa-trash-can"></i>
         </a>
+
         {% else %}
         <h1>Forbidden</h1>
         <p>You are not authorized to update this image.</p>

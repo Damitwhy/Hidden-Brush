@@ -2,7 +2,7 @@
 {% load static %}
 {% block content %}
 <div class="info-top">
-    <a href="{% url 'home' %}" target="_self" class="btn btn-outline-dark">Home</a>
+    <a href="{% url 'home' %}" target="_self" class="btn btn-outline-dark" style="border-radius: 25%;">Home</a>
     {% if user.is_authenticated %}
     <a href="{% url 'logout-confirm' %}" class="btn btn-outline-dark" target="_self"
         style="border-radius: 25%;">Logout</a>

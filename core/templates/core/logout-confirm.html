@@ -10,7 +10,9 @@
             {% csrf_token %}
             <p class="logout-message">Are you sure you want to logout?</p>
             <input class="button btn btn-outline-dark logoutbtn" type="submit" value="Logout"/>
+            
         </form>
+        <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
     </div>
 </div>
 

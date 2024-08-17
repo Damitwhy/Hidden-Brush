@@ -28,7 +28,9 @@
                     {{ form.text }}
                 </div>
                 <button type="submit" class="button btn btn-outline-dark">Submit</button>
+                
             </form>
+            <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
         </div>
         {% else %}
         <div class="comment-form">
