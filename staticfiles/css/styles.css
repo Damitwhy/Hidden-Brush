@@ -204,6 +204,80 @@ form label {
   margin-top: 10px;
 }
 
+.messages {
+  text-align: center;
+  list-style-type: none;
+  padding: 0;
+  opacity: 1;
+  transition: opacity 0.6s ease-in;
+  /* Other timing functions */
+  /* ease */
+  /* ease-in */
+  /* ease-out */
+  /* ease-in-out */
+  /* linear */
+  /* step-start */
+  /* step-end */
+  /* steps() */
+  /* cubic-bezier() */
+  animation: fadeOut 6s forwards;
+}
+
+/* Keyframes to fade out the alert */
+@keyframes fadeOut {
+  0% {
+      opacity: 1;
+  }
+
+  /* Start fully visible */
+  50% {
+      opacity: 1;
+  }
+
+  90% {
+      opacity: 0.2;
+  }
+
+  /* Gradually fade out */
+  100% {
+      display: none;
+      opacity: 0;
+  }
+
+  /* Hide it after fade */
+}
+
+.messages li {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.messages .debug {
+  background-color: #e7e7e7;
+  color: #333;
+}
+
+.messages .info {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+.messages .success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+
+.messages .warning {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+
+.messages .error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+
 @media (max-width: 768px) {
   .topic {
       padding: 2em;
