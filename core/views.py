@@ -50,6 +50,7 @@ class RegisterView(View):
             messages.success(
                 request, 'Your account has been created successfully. You can now log in.')
             return redirect('login')
+            # Re-render the form with error messages if the form is invalid
         return render(request, 'core/register.html', {'form': form})
 
 
