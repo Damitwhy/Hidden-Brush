@@ -1,9 +1,137 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="image-container">
-        <img src="{{ image_url }}" alt="Image {{ image_id }}">
+
+<div class="image-detail-container">
+    <div class="image-box">
+        <div class="image-container">
+            <img src="{{ image_url }}" alt="Image {{ image_id }}">
+        </div>
+        
+        <div class="comments">
+            <h2>Comments</h2>
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
+                    <p><em>{{ comment.created_at }}</em></p>
+                </div>
+            {% endfor %}
+        </div>
+
+        {% if user.is_authenticated %}
+        <div class="comment-form">
+            <h2>Leave a Comment</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group image-detail-comment">
+                    <label for="{{ form.text.id_for_label }}">Comment</label>
+                    {{ form.text }}
+                </div>
+                <button type="submit" class="button btn btn-outline-dark">Submit</button>
+            </form>
+        </div>
+        {% else %}
+        <div class="comment-form">
+            <h2>Leave a Comment</h2>    
+            <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
+        </div>
+        {% endif %}
     </div>
+
+</div>
+
+<style>
+    .image-detail-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* Ensures the content is centered vertically */
+        padding-top: 50px; /* Adds space at the top */
+        padding-bottom: 50px; /* Adds space at the bottom */
+    }
+
+    .image-box {
+        width: 100%;
+        max-width: 800px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .image-container {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .image-container img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .comments {
+        margin-bottom: 20px;
+    }
+
+    .comment {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .comment-form {
+        margin-top: 20px;
+    }
+
+    .comment-form h2 {
+        margin-bottom: 15px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    .button {
+        border-radius: 25%;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #333;
+        color: #fff;
+    }
+
+    .comment a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    .comment a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{% endblock %}
+
     <div class="comments">
         <h2>Comments</h2>
         {% for comment in comments %}
