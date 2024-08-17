@@ -1,38 +1,55 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="image-container">
-        <img src="{{ image_url }}" alt="Image {{ image_id }}">
-    </div>
-    <div class="comments">
-        <h2>Comments</h2>
-        {% for comment in comments %}
-            <div class="comment">
-                <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
-                <p><em>{{ comment.created_at }}</em></p>
-            </div>
-        {% endfor %}
-    </div>
-    {% if user.is_authenticated %}
-    <div class="comment-form">
-        <h2>Leave a Comment</h2>
-        <form method="post">
-            {% csrf_token %}
-            <div class="form-group image-detail-comment">
-                <label for="{{ form.text.id_for_label }}">Comment</label>
-                {{ form.text }}
-            </div>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-    {% else %}
-    <div class="comment-form">
-        <h2>Leave a Comment</h2>    
-        <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
-    </div>
+<div class="image-container">
+    <img src="{{ image_url }}" alt="Image {{ image_id }}">
+    {% if user.is_authenticated and user == image.user %}
+    <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
+        <i class="fa-regular fa-trash-can"></i>
+    </a>
+    <a href="{% url 'update_image' image.id %}" target="_self" class="btn btn-outline-dark">
+        <i class="fa-regular fa-edit"></i>
+    </a>
     {% endif %}
-    <div class="back-link">
-        <a href="{% url 'gallery' %}" class="btn btn-outline-dark" style="border-radius: 25%;">Back to Gallery</a>
+</div>
+<div class="comments">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+    <div class="comment">
+        <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
+        <p><em>{{ comment.created_at }}</em></p>
     </div>
-    
+    {% endfor %}
+</div>
+{% if user.is_authenticated %}
+<div class="comment-form">
+    <h2>Leave a Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group image-detail-comment">
+            <label for="{{ form.text.id_for_label }}">Comment</label>
+            {{ form.text }}
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+{% else %}
+<div class="comment-form">
+    <h2>Leave a Comment</h2>
+    <p>You must be logged in to leave a comment. <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endif %}
+<div class="back-link">
+    <a href="{% url 'gallery' %}" class="btn btn-outline-dark" style="border-radius: 25%;">Back to Gallery</a>
+    {% if user.is_authenticated and user == image.user %}
+    <a href="{% url 'delete_image' image.id %}" target="_self" class="btn btn-outline-dark">
+        <i class="fa-regular fa-trash-can"></i>
+    </a>
+    <a href="{% url 'update_image' image.id %}" target="_self" class="btn btn-outline-dark">
+        <i class="fa-regular fa-edit"></i>
+    </a>
+    {% endif %}
+</div>
+
+
 {% endblock %}
