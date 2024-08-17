@@ -40,7 +40,11 @@
     <div class="author">
       <h2>Hidden Brush</h2>
       <p><b>Hidden Brush</b></p>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout-confirm' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Logout</a>
+      {% else %}
       <a href="{% url 'login' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Login</a>
+      {% endif %}
     </div>
     <div class="model"></div>
   </div>
