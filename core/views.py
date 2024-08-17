@@ -116,6 +116,7 @@ def add_image(request):
             image = form.save(commit=False)
             image.user = request.user
             image.save()
+            messages.success(request, 'Image added successfully.')
             return redirect('gallery')
     else:
         form = ImageForm()
@@ -129,6 +130,7 @@ def update_image(request, image_id):
         form = ImageForm(request.POST, request.FILES, instance=image)
         if form.is_valid():
             form.save()
+            messages.success(request, 'Image updated successfully.')
             return redirect('gallery')
     else:
         form = ImageForm(instance=image)
@@ -140,5 +142,6 @@ def delete_image(request, image_id):
     image = get_object_or_404(Image, id=image_id, user=request.user)
     if request.method == 'POST':
         image.delete()
+        messages.success(request, 'Image deleted successfully.')
         return redirect('gallery')
     return render(request, 'core/delete_image.html', {'image': image})
