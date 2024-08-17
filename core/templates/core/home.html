@@ -41,8 +41,10 @@
       <h2>Hidden Brush</h2>
       <p><b>Hidden Brush</b></p>
       {% if user.is_authenticated %}
-      <a href="{% url 'logout-confirm' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Logout</a>
-      <a href="{% url 'add_image' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Add Art</a>
+      <a href="{% url 'logout-confirm' %}" class="btn btn-outline-dark" target="_self"
+        style="border-radius: 25%;">Logout</a>
+      <a href="{% url 'add_image' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Add
+        Art</a>
       {% else %}
       <a href="{% url 'login' %}" class="btn btn-outline-dark" target="_self" style="border-radius: 25%;">Login</a>
       {% endif %}
@@ -58,35 +60,47 @@
       <div class="col-sm-6 art-text-one">
         <h2 class="text-center text-dark" style="
               margin-top: 150px;
-          ">Art One</h2>
-        <ul>
-          <li></li>
-          <li></li>
-        </ul>
+          ">About Hidden Brush</h2>
+        <p><strong>Welcome to Hidden Brush!</strong></p>
+        <h3>Our Mission</h3>
+        <p>Hidden Brush is an online art gallery dedicated to showcasing the incredible talents of artists from around
+          the world. Our mission is to provide a platform where artists can share their work, engage with a community of
+          fellow art enthusiasts, and receive constructive feedback. Whether you are an emerging artist or a seasoned
+          professional, Hidden Brush is the place to display your creativity.</p>
+        <h3>Our Vision</h3>
+        <p>At Hidden Brush, we believe that art should be accessible to everyone. We strive to create an inclusive
+          environment where artists of all backgrounds can thrive. Our vision is to build a global community that
+          celebrates the diversity of artistic expression.</p>
         <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3">View Gallery</a>
       </div>
       <div class="col-sm-6">
-        <img src="static/images/1.png" class="img-fluid " alt="">
+        <img src="static/images/1.png" class="img-fluid " alt="image 1">
       </div>
     </div>
   </div>
+</div>
 </div>
 <!-------------section 3 adult ------------>
 <section class="art-two mt-5">
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <img src="static/images/4.png" class="img-fluid " alt="">
+        <img src="static/images/4.png" class="img-fluid " alt="image 4">
       </div>
-      <div class="col-sm-6 art-text-two" style="
-          margin-top: 150px;
-      ">
-        <h2 class="text-center text-dark mt-3">Art Two</h2>
+      <div class="col-sm-6 art-text-two" style="margin-top: 150px;">
+        <h2 class="text-center text-dark mt-3">Join Our Gallery</h2>
+        <h3>Get Involved</h3>
+        <p>Are you an artist looking to share your work with the world? Join Hidden Brush today and become a part of our
+          vibrant online community. Here are a few ways you can get involved:</p>
         <ul>
-          <li></li>
-          <li></li>
-          <li></li>
+          <li>Upload and share your artwork with a global audience.</li>
+          <li>Comment on and provide feedback on other artists' work.</li>
+          <li>Participate in art challenges and exhibitions.</li>
+          <li>Connect with fellow artists and art lovers.</li>
         </ul>
+        <p>Thank you for being a part of Hidden Brush. Together, we can make the art world a more connected and
+          inspiring place.</p>
+
         <a href="{% url 'gallery' %}" class="btn btn-outline-dark mb-3">View Gallery</a>
 
       </div>
