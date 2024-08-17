@@ -8,6 +8,16 @@ class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User  # Point to your custom User model
         fields = ('username', 'email', 'password1', 'password2')
+        
+    def clean_username(self):
+
+        username = self.cleaned_data.get('username')
+
+        if User.objects.filter(username=username).exists():
+
+            raise forms.ValidationError("This username is already taken. Please choose another.")
+
+        return username
 
 
 class CommentForm(forms.ModelForm):
