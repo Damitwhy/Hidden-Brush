@@ -1,38 +1,37 @@
-from django.shortcuts import render, redirect, get_object_or_404
+import os
+from django.conf import settings
 from django.contrib import messages
-from django.views.generic.list import ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy, reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView, View
-from django.urls import reverse_lazy, reverse
-from django.contrib.auth.views import LoginView, LogoutView
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
-from .models import Comment, Image
+from django.views.generic.list import ListView
 from .forms import CommentForm, ImageForm
-from django.conf import settings
-import os
+from .models import Comment, Image
 
-
-
-from django.shortcuts import render
-from django.urls import reverse
-import os
-from django.conf import settings
 
 def gallery(request):
-    return render(request, 'core/gallery.html')
+    images = Image.objects.all()
+    return render(request, 'core/gallery.html', {'images': images})
 
 
 def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
 
-
 @login_required
 def image_detail(request, image_id):
-    # Fetch the image object associated with the image_id
+
+    # Retrieve the image object
     image = get_object_or_404(Image, id=image_id)
+    
+    # Get the Cloudinary URL
+    image_url = image.image.url
+    
 
     # Get all comments on the image, excluding the logged-in user's comments
     other_comments = Comment.objects.filter(image_id=image_id).exclude(user=request.user).order_by('created_at')
@@ -52,15 +51,16 @@ def image_detail(request, image_id):
             comment.save()
             return redirect('image_detail', image_id=image_id)
     else:
-        form = CommentForm()
 
-    # Pass the image, comments, and form to the template
-    return render(request, 'image_detail.html', {
-        'image': image,
+        form = CommentForm()    
+    # Pass the image_url to the template context
+    return render(request, 'core/image_detail.html', {
+        'image_id': image_id,
+        'image_url': image_url,
         'comments': comments,
         'form': form
     })
-
+    
 
 # CRUD views for Image model
 @login_required

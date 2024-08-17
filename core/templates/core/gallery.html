@@ -2,94 +2,29 @@
 {% load static %}
 {% block content %}
 <div class="info-top">
-    <a href="{% url 'home' %}" target="_blank" class="btn btn-outline-dark">Home</i></a>
-    <a href="" target="_blank" class="btn btn-outline-dark">Logout</i></a>
+    <a href="{% url 'home' %}" target="_blank" class="btn btn-outline-dark">Home</a>
+    <a href="#" target="_blank" class="btn btn-outline-dark">Logout</a>
 </div>
 <div class="gallery">
-
     <section class="text-center text-dark mt-3">
         <h2>Gallery</h2>
-
     </section>
     <section class="topics row">
+        {% for image in images %}
         <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/5.png" class="mb-2" alt="">
-            <h3>art 1</h3>
-            <p>art 1</p>
+            <img src="{{ image.image.url }}" class="mb-2" alt="{{ image.title }}">
+            <h3>{{ image.title }}</h3>
+            <p>{{ image.description }}</p>
             <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
+                <a href="#" target="_blank" class="btn btn-outline-dark">
                     <i class="fa-regular fa-heart"></i>
                 </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
+                <a href="{% url 'image_detail' image.id %}" target="_blank" class="btn btn-outline-dark">
                     <i class="fa-regular fa-comment"></i>
                 </a>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/6.png" class="mb-2" alt="">
-            <h3>art 2</h3>
-            <p>art 2</p>
-            <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-comment"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/8.png" class="mb-2" alt="">
-            <h3>art 3</h3>
-            <p>art 3</p>
-            <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-comment"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/9.png" class="mb-2" alt="">
-            <h3>art 4</h3>
-            <p>art 4</p>
-            <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-comment"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/10.png" class="mb-2" alt="">
-            <h3>art 5</h3>
-            <p>art 5</p>
-            <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-comment"></i>
-                </a>
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 mb-4 topic">
-            <img src="/static/images/11.png" class="mb-2" alt="">
-            <h3>art 6</h3>
-            <p>art 6</p>
-            <div class="btn-group">
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-heart"></i>
-                </a>
-                <a href="" target="_blank" class="btn btn-outline-dark">
-                    <i class="fa-regular fa-comment"></i>
-                </a>
-            </div>
-        </div>
+        {% endfor %}
     </section>
 </div>
 {% endblock %}
