@@ -13,7 +13,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView, View
 from django.views.generic.list import ListView
 from .forms import CommentForm, ImageForm, CustomUserCreationForm
-from .models import Comment, Image
+from .models import Comment, Image, Like
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, redirect
 from django.http import JsonResponse, HttpResponseForbidden
@@ -137,7 +137,6 @@ def add_image(request):
         form = ImageForm()
     return render(request, 'core/add_image.html', {'form': form})
 
-
 @login_required
 def update_image(request, image_id):
     image = get_object_or_404(Image, id=image_id)
@@ -166,3 +165,13 @@ def delete_image(request, image_id):
         messages.success(request, 'Image deleted successfully.')
         return redirect('gallery')
     return render(request, 'core/delete_image.html', {'image': image})
+
+@login_required
+def toggle_like(request, image_id):
+    image = get_object_or_404(Image, id=image_id)
+    like, created = Like.objects.get_or_create(user=request.user, image=image)
+    
+    if not created:
+        like.delete()  # Unlike the image if it was already liked
+    
+    return redirect('gallery')

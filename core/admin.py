@@ -19,3 +19,4 @@ class ImageAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     fields = ('user', 'image', 'title', 'description', 'created_at')
     readonly_fields = ('created_at',)
+
