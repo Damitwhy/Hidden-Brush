@@ -10,58 +10,10 @@
             {% csrf_token %}
             <p class="logout-message">Are you sure you want to logout?</p>
             <input class="button btn btn-outline-dark logoutbtn" type="submit" value="Logout"/>
+            
         </form>
+        <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
     </div>
 </div>
-
-<style>
-    .logout-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh; /* Ensures full viewport height to center the content */
-    }
-
-    .logout-box {
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .logout-message {
-        font-size: 18px;
-        color: #333;
-        margin-bottom: 20px;
-    }
-
-    .button {
-        border-radius: 25%;
-        padding: 10px 20px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .button:hover {
-        background-color: #333;
-        color: #fff;
-    }
-
-    .backbtn {
-        display: block;
-        margin-bottom: 15px;
-        color: #007bff;
-        text-decoration: none;
-        font-size: 14px;
-    }
-
-    .backbtn:hover {
-        text-decoration: underline;
-    }
-</style>
 
 {% endblock content %}
