@@ -17,10 +17,10 @@ Hidden Brush is an art gallery web application where users can upload, view, lik
 - [Technology Stack](#technology-stack)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
+- [Project Structure](#️project-structure)
 - [Contributing](#contributing)
 - [Testing](#testing)
-- [Credit](#credit)
+- [Credites](#credits)
 - [Contact](#contact)
 
 ## 🖼Project Overview
@@ -135,6 +135,7 @@ Update Artworks: Logged-in users can edit the title, description, or image of th
 - **Delete Artworks:** Logged-in users can delete their uploaded artworks from the gallery.
 
 ## 🗂️Project Structure
+
 ```markdown
 hidden_brush/
     core/
