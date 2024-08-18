@@ -1,16 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style>
-    .info-top {
-        position: -webkit-sticky; /* For Safari */
-        position: sticky;
-        top: 0;
-        z-index: 1000; /* Ensure it stays above other content */
-        background-color: white; /* Optional: to ensure it doesn't become transparent */
-        padding: 10px; /* Optional: to add some padding */
-    }
-</style>
+
 <div class="info-top">
     <a href="{% url 'home' %}" target="_self" class="btn btn-outline-dark" style="border-radius: 25%;">Home</a>
     {% if user.is_authenticated %}
