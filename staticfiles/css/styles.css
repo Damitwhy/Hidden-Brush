@@ -176,6 +176,7 @@ li{
   align-items: flex-start;
   min-height: 100vh; 
   padding-top: 50px; 
+  padding-bottom: 50px; 
 }
 
 
@@ -188,6 +189,7 @@ li{
   background-color: #f9f9f9;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  margin-bottom: 20px;
 }
 
 .backbtn {
@@ -506,30 +508,6 @@ form label {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 992px) {
   .banner .slider {
     width: 160px;
@@ -585,4 +563,22 @@ form label {
     padding: 2em;
     text-align: center;
   }
+}
+
+/* Force the styles to apply using !important */
+.custom-login-button {
+  width: 100% !important;
+  padding: 10px !important;
+  border-radius: 25px !important;
+  border: 1px solid gray !important;
+  background-color: transparent !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+  text-align: center !important;
+}
+
+.custom-login-button:hover {
+  color: white !important;
+  background-color: #292929 !important;
 }
