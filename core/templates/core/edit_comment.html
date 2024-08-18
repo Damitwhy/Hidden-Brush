@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div class="form-box">
+        <h2>Edit Comment</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{ form.text.id_for_label }}">Comment</label>
+                {{ form.text }}
+            </div>
+            <button type="submit" class="btn btn-outline-dark">Save</button>
+            <a href="{% url 'image_detail' comment.image_id %}" class="btn btn-outline-secondary">Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
