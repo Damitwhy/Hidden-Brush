@@ -1,5 +1,6 @@
 import os
 import json
+import logging
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -28,15 +29,28 @@ def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
 
-
 class CustomLoginView(LoginView):
     template_name = 'core/login.html'
     redirect_authenticated_user = True
 
-    def get_success_url(self):
-        messages.success(self.request, 'You have successfully logged in.')
+    def get_redirect_url(self):
+        redirect_to = self.request.GET.get('next')
+        logging.info(f"Redirecting to: {redirect_to}")
+        if redirect_to:
+            return redirect_to
         return reverse_lazy('home')
+    
+    def form_valid(self, form):
+        """Security check complete. Log the user in."""
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have successfully logged in.')
+        return response
 
+
+    #def get_success_url(self, form):
+    #   response = super().get_success_url(form)
+    #   messages.success(self.request, 'You have successfully logged in.')
+    #   return response
 
 class RegisterView(View):
     def get(self, request):
