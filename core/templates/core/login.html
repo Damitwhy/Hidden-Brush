@@ -11,15 +11,17 @@
         <div class="card-body">
             <form method="POST">
                 {% csrf_token %}
-                {{form.as_p}}
-                <input class="button btn btn-outline-dark" type="submit" value="Login">
-            </form>
+                {{ form.as_p }}
+                <input type="hidden" name="next" value="{{ next }}">
+                <button type="submit">Login</button>
+            </form>            
         </div>
 
         <p>Don't have an account? <a href="{% url 'register' %}">Register</a></p>
         <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
     </div>
-  
+</div>
+
 </div>
 
 <style>
