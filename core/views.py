@@ -137,7 +137,6 @@ def add_image(request):
         form = ImageForm()
     return render(request, 'core/add_image.html', {'form': form})
 
-
 @login_required
 def update_image(request, image_id):
     image = get_object_or_404(Image, id=image_id)
@@ -167,7 +166,6 @@ def delete_image(request, image_id):
         return redirect('gallery')
     return render(request, 'core/delete_image.html', {'image': image})
 
-# views.py
 @login_required
 def toggle_like(request, image_id):
     image = get_object_or_404(Image, id=image_id)
