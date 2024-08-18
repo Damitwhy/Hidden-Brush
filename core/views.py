@@ -22,6 +22,10 @@ from django.views.decorators.csrf import csrf_exempt
 
 def gallery(request):
     images = Image.objects.all()
+
+    for image in images:
+        image.is_liked_by_user = image.like_set.filter(user=request.user).exists() if request.user.is_authenticated else False
+
     return render(request, 'core/gallery.html', {'images': images})
 
 
@@ -120,6 +124,16 @@ def image_detail(request, image_id):
         'comments': comments,
         'form': form
     })
+
+@login_required
+def toggle_like(request, image_id):
+    image = get_object_or_404(Image, id=image_id)
+    like, created = Like.objects.get_or_create(user=request.user, image=image)
+    
+    if not created:
+        like.delete()  # Unlike the image if it was already liked
+    
+    return redirect('gallery')
 
 
 # CRUD views for Image model
