@@ -76,7 +76,7 @@
     font-size: 3em;
   }
   .banner .content .model {
-    background-image: url('../images/main.png');
+    background-image: url("../images/main.e095d1262ec4.png");
     width: 100%;
     height: 80vh;
     position: absolute;
@@ -88,9 +88,6 @@
     z-index: 1;
   }
 
-  .mb-3, .my-3 {
-     margin-bottom: 0 !important; 
-}
 
   h2 {
     font-family: 'poppins', sans-serif;
@@ -337,51 +334,11 @@ li{
   box-sizing: border-box;
 }
 
-.delete-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* Ensures the content is centered vertically */
-  padding-top: 50px; /* Space from the top */
-  padding-bottom: 50px; /* Space from the bottom */
-}
-
-.delete-box {
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.delete-message {
-  font-size: 18px;
-  color: #333;
-  margin-bottom: 20px;
-}
-
 /* login page  */
 .header-bar h1 {
   font-size: 24px;
   margin-bottom: 20px;
   color: #333;
-}
-
-.login-box p {
-  margin-top: 15px;
-  color: #555;
-}
-
-.login-box p a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.login-box p a:hover {
-  text-decoration: underline;
 }
 
 .card-body {

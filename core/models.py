@@ -13,6 +13,10 @@ class User(AbstractUser):
     """
     is_admin = models.BooleanField(default=False)
 
+    @property
+    def liked_images(self):
+        return Image.objects.filter(like_user=self)
+
 
 class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
@@ -24,7 +28,6 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment by {self.user.username} on image {self.image_id}'
 
-
 class Image(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL,
                              on_delete=models.CASCADE)
@@ -32,7 +35,7 @@ class Image(models.Model):
     title = models.CharField(max_length=255)
     description = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
-    comments = models.ManyToManyField(Comment, blank=True)
+    comments = models.ManyToManyField('Comment', blank=True)
 
     def __str__(self):
         return f'Image {self.id} by {self.user.username}'
@@ -45,3 +48,11 @@ class Image(models.Model):
 
     def get_likes_count(self):
         return Like.objects.filter(image_id=self.id).count()
+
+class Like(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    image = models.ForeignKey('Image', on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'Like by {self.user.username} on Image {self.image.id}'
+

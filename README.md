@@ -1,4 +1,3 @@
-
 # 🎨 Hidden Brush
 
 Hidden Brush is an art gallery web application where users can upload, view, like, comment on, update, and delete artwork. Built using Django, Python, JavaScript, HTML, and CSS, this project showcases features such as user authentication, image management, and an interactive gallery experience.
@@ -9,7 +8,7 @@ Hidden Brush is an art gallery web application where users can upload, view, lik
 ![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
 ![Landing/Mockup image of website](static/images/)
-## 📖 Table of Contents
+## 📖Table of Contents
 
 - [Project Overview](#project-overview)
 - [Wireframe](#wireframe)
@@ -32,55 +31,64 @@ Hidden Brush allows users to explore various artworks, interact with them by lik
 The wireframe below outlines the basic structure of the Hidden Brush application:
 
 ### Landing/Home page
+
 ![Landing/Home Page](static/images/Home-wire.png)
 
 ### Login Page
+
 - **Login/Register Page**: Allows users to log in or create a new account.
-![Login Page](static/images/login-wire.png)
+  ![Login Page](static/images/login-wire.png)
 
 ### Gallery Page
+
 - **Home Page/Gallery Page**: Displays a collection of artworks in a grid format. Each artwork has a like button and a comment section.
-![Gallery Page](static/images/gallery-wire.png)
+  ![Gallery Page](static/images/gallery-wire.png)
 
 ### Comment Page
+
 - **Login/Register Page**: Allows users to log in or create a new account.
-![Comment Page](static/images/comment-wire.png)
+  ![Comment Page](static/images/comment-wire.png)
 
 ## ✨Features
+
 
 - **User Registration and Authentication**: Users can register, login, and logout securely.
  ### Login Page and Registration Form
  ![login page](static/images/)
  ![Registration page](siatic/images/)
+ 
 - **Image Gallery**: Users can upload their artworks, view them in the gallery, and see details about each image.
 ### Gallery Page
  ![Gallery page](static/images/)
+ 
 - **Like and Comment**: Users can like images and leave comments. The like count updates in real-time.
  ### Like and Comment Section
  ![Like and Comment section](static/images/)
+ 
 - **Comment Management:** Users can add, view, edit, and delete their comments.
  ### Comment Page
  ![Comment page](static/images/)
+ 
 - **CRUD Operations**: Users can create, view, update, and delete their images.
  ![Image_Add Page](static/images/)
  ![Image_detail page](static/images/)
  ![Image_update Page](static/images/)
  ![Image_delete Page](static/images/)
+ 
 - **Responsive Design:** The application is accessible on desktop ,mobile  Tablet and Laptop devices.
  ### Responsive in all Devices
  ![Responsive Design](static/images/)
 
- ## 🛠Technology Stack
+## 🛠Technology Stack
 
-| Technology | Description |
-|------------|-------------|
-| **Django** | Web framework used for developing the backend and managing the database. |
-| **Python** | Programming language used for the backend logic. |
-| **JavaScript** | For dynamic front-end interactions. |
-| **HTML5 & CSS3** | Markup and styling for the frontend. |
-| **SQLite** | Default database for development. |
-| **Git** | Version control system used for code management. |
-
+| Technology       | Description                                                              |
+| ---------------- | ------------------------------------------------------------------------ |
+| **Django**       | Web framework used for developing the backend and managing the database. |
+| **Python**       | Programming language used for the backend logic.                         |
+| **JavaScript**   | For dynamic front-end interactions.                                      |
+| **HTML5 & CSS3** | Markup and styling for the frontend.                                     |
+| **SQLite**       | Default database for development.                                        |
+| **Git**          | Version control system used for code management.                         |
 
 ## 🚀Installation
 
@@ -107,6 +115,7 @@ venv\Scripts\activate
 source venv/bin/activate
 
 ### Install Dependencies
+
 - pip install -r requirements.txt
 
 ### Run Migrations
@@ -115,15 +124,19 @@ source venv/bin/activate
 - python manage.py migrate
 
 ### Create a Superuser
+
 - python manage.py createsuperuser
 
 ### Run the Development Server
+
 - python manage.py runserver
 
 - Access the application (our browser url)
 
 ## 💻Usage
+
 ### User Interaction
+
 - **Registration:** New users can register by providing a username, email, and password.
 - **Login:** Registered users can log in to access all features.
 - **Browse Gallery:** Users can view all artworks in the gallery.
@@ -166,7 +179,9 @@ hidden_brush/
         wsgi.py
     manage.py
 ```
+
 ## 🤝Contributing
+
 - Contributions are welcome! Please follow these steps to contribute:
 
 - Fork the repository.
@@ -240,9 +255,12 @@ hidden_brush/
 
 - **Contributors**: Thanks to everyone who has contributed to this project.
 
+
 ## 📬Contact
+
 - For any inquiries or issues, please contact:
 
 - Project Maintainer: Admin
 - Email: admin@email.com
+
 

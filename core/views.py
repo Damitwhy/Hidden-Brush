@@ -1,4 +1,6 @@
 import os
+import json
+import logging
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -11,16 +13,19 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView, View
 from django.views.generic.list import ListView
 from .forms import CommentForm, ImageForm, CustomUserCreationForm
-from .models import Comment, Image
+from .models import Comment, Image, Like
 from django.contrib.auth import logout
 from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseForbidden
 from django.views.decorators.csrf import csrf_exempt
-import json
 
 
 def gallery(request):
     images = Image.objects.all()
+
+    for image in images:
+        image.is_liked_by_user = image.like_set.filter(user=request.user).exists() if request.user.is_authenticated else False
+
     return render(request, 'core/gallery.html', {'images': images})
 
 
@@ -28,15 +33,28 @@ def home(request):
     # Renders the home page template
     return render(request, 'core/home.html')
 
-
 class CustomLoginView(LoginView):
     template_name = 'core/login.html'
     redirect_authenticated_user = True
 
-    def get_success_url(self):
-        messages.success(self.request, 'You have successfully logged in.')
+    def get_redirect_url(self):
+        redirect_to = self.request.GET.get('next')
+        logging.info(f"Redirecting to: {redirect_to}")
+        if redirect_to:
+            return redirect_to
         return reverse_lazy('home')
+    
+    def form_valid(self, form):
+        """Security check complete. Log the user in."""
+        response = super().form_valid(form)
+        messages.success(self.request, 'You have successfully logged in.')
+        return response
 
+
+    #def get_success_url(self, form):
+    #   response = super().get_success_url(form)
+    #   messages.success(self.request, 'You have successfully logged in.')
+    #   return response
 
 class RegisterView(View):
     def get(self, request):
@@ -107,6 +125,16 @@ def image_detail(request, image_id):
         'form': form
     })
 
+@login_required
+def toggle_like(request, image_id):
+    image = get_object_or_404(Image, id=image_id)
+    like, created = Like.objects.get_or_create(user=request.user, image=image)
+    
+    if not created:
+        like.delete()  # Unlike the image if it was already liked
+    
+    return redirect('gallery')
+
 
 # CRUD views for Image model
 @login_required
@@ -123,10 +151,12 @@ def add_image(request):
         form = ImageForm()
     return render(request, 'core/add_image.html', {'form': form})
 
-
 @login_required
 def update_image(request, image_id):
-    image = get_object_or_404(Image, id=image_id, user=request.user)
+    image = get_object_or_404(Image, id=image_id)
+    if image.user != request.user:
+        return HttpResponseForbidden("You are not authorized to update this image.")
+    
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES, instance=image)
         if form.is_valid():
@@ -135,14 +165,27 @@ def update_image(request, image_id):
             return redirect('gallery')
     else:
         form = ImageForm(instance=image)
-    return render(request, 'core/update_image.html', {'form': form})
+    return render(request, 'core/update_image.html', {'form': form, 'image': image})
 
 
 @login_required
 def delete_image(request, image_id):
-    image = get_object_or_404(Image, id=image_id, user=request.user)
+    image = get_object_or_404(Image, id=image_id)
+    if image.user != request.user:
+        return HttpResponseForbidden("You are not authorized to delete this image.")
+    
     if request.method == 'POST':
         image.delete()
         messages.success(request, 'Image deleted successfully.')
         return redirect('gallery')
     return render(request, 'core/delete_image.html', {'image': image})
+
+@login_required
+def toggle_like(request, image_id):
+    image = get_object_or_404(Image, id=image_id)
+    like, created = Like.objects.get_or_create(user=request.user, image=image)
+    
+    if not created:
+        like.delete()  # Unlike the image if it was already liked
+    
+    return redirect('gallery')

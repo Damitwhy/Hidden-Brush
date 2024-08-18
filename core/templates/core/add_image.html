@@ -21,61 +21,8 @@
             </div>
             <button type="submit" class="button btn btn-outline-dark">Add Image</button>
         </form>
+        <a href="{% url 'gallery' %}" class="mx-3 my-2 button btn btn-outline-dark">Back</a>
     </div>
 </div>
-
-<style>
-    .form-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh; /* Full height to center the content */
-        padding-top: 50px;
-        padding-bottom: 50px;
-    }
-
-    .form-box {
-        width: 100%;
-        max-width: 400px;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-    }
-
-    .form-group {
-        margin-bottom: 20px;
-        text-align: left;
-    }
-
-    .form-group label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-
-    .button {
-        border-radius: 25%;
-        padding: 10px 20px;
-        cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .button:hover {
-        background-color: #333;
-        color: #fff;
-    }
-</style>
 
 {% endblock %}
