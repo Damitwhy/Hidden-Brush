@@ -14,6 +14,10 @@
                 <div class="comment">
                     <p><strong>{{ comment.user.username }}</strong>: {{ comment.text }}</p>
                     <p><em>{{ comment.created_at }}</em></p>
+                    {% if comment.user == user %}
+                        <a href="{% url 'edit_comment' comment.id %}" class="btn btn-outline-dark btn-sm"><i class="fa-regular fa-edit"></i></a>
+                        <a href="{% url 'delete_comment' comment.id %}" class="btn btn-outline-danger btn-sm"><i class="fa-regular fa-trash-can"></i></a>
+                    {% endif %}
                 </div>
             {% endfor %}
         </div>
@@ -43,4 +47,3 @@
 </div>
 
 {% endblock %}
-

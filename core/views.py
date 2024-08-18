@@ -3,21 +3,50 @@ import json
 import logging
 from django.conf import settings
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.http import JsonResponse, HttpResponseForbidden
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy, reverse
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormView, View
 from django.views.generic.list import ListView
 from .forms import CommentForm, ImageForm, CustomUserCreationForm
 from .models import Comment, Image, Like
-from django.contrib.auth import logout
-from django.shortcuts import get_object_or_404, redirect
-from django.http import JsonResponse, HttpResponseForbidden
-from django.views.decorators.csrf import csrf_exempt
+
+
+@login_required
+def edit_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        return HttpResponseForbidden("You are not authorized to edit this comment.")
+    
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('image_detail', image_id=comment.image_id)
+    else:
+        form = CommentForm(instance=comment)
+    
+    return render(request, 'core/edit_comment.html', {'form': form, 'comment': comment})
+
+@login_required
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.user != request.user:
+        return HttpResponseForbidden("You are not authorized to delete this comment.")
+    
+    if request.method == 'POST':
+        image_id = comment.image_id
+        comment.delete()
+        return redirect('image_detail', image_id=image_id)
+    
+    return render(request, 'core/delete_comment.html', {'comment': comment})
 
 
 def gallery(request):
