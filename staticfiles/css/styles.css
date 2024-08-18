@@ -115,6 +115,12 @@ li{
   display: flex;
   justify-content: flex-end; /* Aligns items to the right */
   margin-top: 20px; /* Adds margin to the top of the container */
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Ensure it stays above other content */
+  background-color: white; /* Optional: to ensure it doesn't become transparent */
+  padding: 10px; /* Optional: to add some padding */
 }
 
 .info-top a {
@@ -161,12 +167,188 @@ li{
   justify-content: center;
 }
 
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh; 
+  padding-top: 50px; 
+}
 
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.backbtn {
+  display: block;
+  margin-bottom: 15px;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.backbtn:hover {
+  text-decoration: underline;
+}
+
+.button {
+  border-radius: 25%;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Full height to center the content */
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.form-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.image-detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures the content is centered vertically */
+  padding-top: 50px; /* Adds space at the top */
+  padding-bottom: 50px; /* Adds space at the bottom */
+}
+
+.image-box {
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.image-container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.comments {
+  margin-bottom: 20px;
+}
+
+.comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.comment-form {
+  margin-top: 20px;
+}
+
+.comment-form h2 {
+  margin-bottom: 15px;
+}
+
+.comment a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.comment a:hover {
+  text-decoration: underline;
+}
+
+.logout-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensures full viewport height to center the content */
+}
+
+.logout-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logout-message {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 /* login page  */
 .header-bar h1 {
-  font-size: 48px;
-  margin-bottom: 50px;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.card-body {
+  margin-bottom: 20px;
+}
+
+.card-body form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .card-body p {
@@ -198,8 +380,8 @@ form label {
 
 .helptext {
   display: block;
-  margin-bottom: 10px;
-  color: #6c757d;
+  font-size: 12px;
+  color: #777;
   font-size: 0.9em;
   margin-top: 10px;
 }
@@ -210,16 +392,6 @@ form label {
   padding: 0;
   opacity: 1;
   transition: opacity 0.6s ease-in;
-  /* Other timing functions */
-  /* ease */
-  /* ease-in */
-  /* ease-out */
-  /* ease-in-out */
-  /* linear */
-  /* step-start */
-  /* step-end */
-  /* steps() */
-  /* cubic-bezier() */
   animation: fadeOut 6s forwards;
 }
 
