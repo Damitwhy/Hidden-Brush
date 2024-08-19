@@ -146,7 +146,7 @@ git clone https://github.com/Damitwhy/hidden_brush.git
 
 - python manage.py runserver
 
-- Access the application (our browser url)
+- Access the application https://hidden-brush-d91e531a264d.herokuapp.com/
 
 ## 💻Usage
 
