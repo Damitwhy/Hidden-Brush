@@ -85,7 +85,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     # Custom middleware
-
+    'core.middleware.AdminAccessMiddleware',#restricts access to admin page to superusers and staff
     'allauth.account.middleware.AccountMiddleware',
     # 'core.middleware.AdminAccessMiddleware',
 ]
