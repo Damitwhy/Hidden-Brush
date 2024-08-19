@@ -8,6 +8,7 @@ Hidden Brush is an art gallery web application where users can upload, view, lik
 ![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
 ![Landing/Mockup image of website](static/images/)
+
 ## 📖Table of Contents
 
 - [Project Overview](#project-overview)
@@ -51,33 +52,43 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 
 ## ✨Features
 
-
 - **User Registration and Authentication**: Users can register, login, and logout securely.
- ### Login Page and Registration Form
- ![login page](static/images/)
- ![Registration page](siatic/images/)
- 
+
+### Login Page and Registration Form
+
+![login page](static/images/login-new.png)
+![Registration page](static/images/reg-new.png)
+
 - **Image Gallery**: Users can upload their artworks, view them in the gallery, and see details about each image.
+
 ### Gallery Page
- ![Gallery page](static/images/)
- 
+
+![Gallery page](static/images/gallery-new.png)
+
 - **Like and Comment**: Users can like images and leave comments. The like count updates in real-time.
- ### Like and Comment Section
- ![Like and Comment section](static/images/)
- 
+
+### Like and Comment Section
+
+![Like and Comment section](static/images/like-button-activated-likecount-incremented.png)
+
 - **Comment Management:** Users can add, view, edit, and delete their comments.
- ### Comment Page
- ![Comment page](static/images/)
- 
+
+### Comment Page
+
+![Comment page](static/images/Users-comment-options-edit-delete.png)
+
 - **CRUD Operations**: Users can create, view, update, and delete their images.
- ![Image_Add Page](static/images/)
- ![Image_detail page](static/images/)
- ![Image_update Page](static/images/)
- ![Image_delete Page](static/images/)
- 
-- **Responsive Design:** The application is accessible on desktop ,mobile  Tablet and Laptop devices.
- ### Responsive in all Devices
- ![Responsive Design](static/images/)
+  ![Image_Add Page](static/images/add-art-form.png)
+  ![Image_detail page](static/images/comment-form.png)
+  ![Image_update Page](static/images/update-art-form.png)
+
+![Image_delete Page](static/images/delete-art-confirmaton.png)
+
+- **Responsive Design:** The application is accessible on desktop ,mobile Tablet and Laptop devices.
+
+### Responsive in all Devices
+
+![Responsive Design](static/images/am-i-responsive.png)
 
 ## 🛠Technology Stack
 
@@ -99,20 +110,24 @@ The wireframe below outlines the basic structure of the Hidden Brush application
 - Git
 
 ### Clone the repository:
-   git clone https://github.com/Damitwhy/hidden_brush.git
+
+git clone https://github.com/Damitwhy/hidden_brush.git
 
 ### Navigate to the project directory:
+
 - cd hidden_brush
 
 ### Create a virtual environment:
+
 - python3 -m venv venv
+
 ### Activate the virtual environment:
 
 - On Windows:
-venv\Scripts\activate
+  venv\Scripts\activate
 
 - On macOS/Linux:
-source venv/bin/activate
+  source venv/bin/activate
 
 ### Install Dependencies
 
@@ -144,40 +159,40 @@ source venv/bin/activate
 - **View Image Details:** Users can click on any image in the gallery to view detailed information, including title, description, likes, and comments.
 - **Like Artworks:** Logged-in users can like their favorite pieces, and the like count will update in real-time.
 - **Comment on Artworks:** Logged-in users can add, edit, and delete comments on artworks.
-Update Artworks: Logged-in users can edit the title, description, or image of the artworks they have uploaded.
+  Update Artworks: Logged-in users can edit the title, description, or image of the artworks they have uploaded.
 - **Delete Artworks:** Logged-in users can delete their uploaded artworks from the gallery.
 
 ## 🗂️Project Structure
 
 ```markdown
 hidden_brush/
-    core/
-        migrations/
-        static/
-            css/
-        templates/
-            core/
-                add_image.html
-                delete_image.html
-                gallery.html
-                home.html
-                image_detail.html
-                login.html
-                logout_confirm.html
-                register.html
-                update_image.html
-        admin.py
-        apps.py
-        forms.py
-        models.py
-        tests.py
-        urls.py
-        views.py
-    hidden_brush/
-        settings.py
-        urls.py
-        wsgi.py
-    manage.py
+core/
+migrations/
+static/
+css/
+templates/
+core/
+add_image.html
+delete_image.html
+gallery.html
+home.html
+image_detail.html
+login.html
+logout_confirm.html
+register.html
+update_image.html
+admin.py
+apps.py
+forms.py
+models.py
+tests.py
+urls.py
+views.py
+hidden_brush/
+settings.py
+urls.py
+wsgi.py
+manage.py
 ```
 
 ## 🤝Contributing
@@ -197,47 +212,57 @@ hidden_brush/
 ### Manual Testing
 
 ### 1. User Registration
-- **Step 1**: Navigate to the registration page. 
-![Registration Page](static/images/)
+
+- **Step 1**: Navigate to the registration page.
+  ![Registration Page](static/images/reg-new.png)
 - **Step 2**: Fill out the registration form with a username, email, and password.
 - **Step 3**: Submit the form and verify that you are redirected to the login page.
 - **Step 4**: Try to register again with the same username and ensure that the system throws an error message indicating that the username already exists.
 
 ### 2. User Login
+
 - **Step 1**: Navigate to the login page .
-![Login page](static/images/)
+  ![Login page](static/images/login-new.png)
 - **Step 2**: Enter valid credentials and submit the form.
 - **Step 3**: Verify that you are redirected to the home page or gallery.
 
 ### 3. Image Upload
+
 - **Step 1**: After logging in, navigate to the add image page.
-![Add image page](static/images/)
+  ![Add image page](static/images/add-art-form.png)
 - **Step 2**: Fill out the form with an image, title, and description.
 - **Step 3**: Submit the form and verify that the image appears in the gallery.
 
 ### 4. View Image Details
+
 - **Step 1**: Go to the gallery page .
-![Gallery Page](static/images/)
+  ![Gallery Page](static/images/gallery-new.png)
 - **Step 2**: Click on an image to view its details.
 - **Step 3**: Verify that the image, title, description, and comments are displayed correctly.
 
 ### 5. Update Image
+
 - **Step 1**: Navigate to the update image page.
-![Updated Image page](static/images/)
+
+  ![Updated Image page](static/images/update-art-form.png)
+
 - **Step 2**: Modify the image, title, or description.
 - **Step 3**: Submit the form and verify that the changes are reflected in the gallery.
 
 ### 6. Delete Image
+
 - **Step 1**: Navigate to the delete image page.
-![Delete Image page](static/images/)
+
+  ![Delete Image page](static/images/delete-art-confirmaton.png)
+
 - **Step 2**: Confirm the deletion.
 - **Step 3**: Verify that the image is removed from the gallery.
 
 ### 7. Like and Comment on an Image
+
 - **Step 1**: In the gallery, click the heart icon to like an image.
 - **Step 2**: Verify that the like count increases by one.
 - **Step 3**: Leave a comment on the image detail page and ensure it appears below the image.
-
 
 ## 🙏Credits
 
@@ -255,12 +280,9 @@ hidden_brush/
 
 - **Contributors**: Thanks to everyone who has contributed to this project.
 
-
 ## 📬Contact
 
 - For any inquiries or issues, please contact:
 
 - Project Maintainer: Admin
 - Email: admin@email.com
-
-
