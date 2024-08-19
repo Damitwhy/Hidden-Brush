@@ -49,6 +49,9 @@ class Image(models.Model):
     def get_likes_count(self):
         return Like.objects.filter(image_id=self.id).count()
 
+    def get_liked_by(self):
+        return [like.user.username for like in Like.objects.filter(image_id=self.id)]
+
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ForeignKey('Image', on_delete=models.CASCADE)
