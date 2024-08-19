@@ -7,7 +7,7 @@ Hidden Brush is an art gallery web application where users can upload, view, lik
 ![Django](https://img.shields.io/badge/django-3.2%2B-green)
 ![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen)
 
-![Landing/Mockup image of website](static/images/)
+![Landing/Mockup image of website](static/images/am-i-responsive.png)
 
 ## 📖Table of Contents
 
@@ -259,6 +259,8 @@ manage.py
 - **Step 3**: Verify that the image is removed from the gallery.
 
 ### 7. Like and Comment on an Image
+
+![Like and Comment](static/images/gallery-image-shows-title-description-buttons-like-likecount-comment.png)
 
 - **Step 1**: In the gallery, click the heart icon to like an image.
 - **Step 2**: Verify that the like count increases by one.
