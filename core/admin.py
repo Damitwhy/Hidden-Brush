@@ -1,16 +1,14 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.contrib.auth.models import User
-from .models import Comment, Image, Like
-
-admin.site.register(User)
-admin.site.register(User, UserAdmin)
+from .models import User, Comment, Image, Like
 
 class UserAdmin(BaseUserAdmin):
-    list_display = ('username', 'email', 'first_name', 'last_name', 'is_staff')
-    search_fields = ('username', 'email', 'first_name', 'last_name')
-    list_filter = ('is_staff', 'is_superuser', 'is_active')
+    list_display = ('username', 'email', 'is_admin')
+    search_fields = ('username', 'email')
+    list_filter = ('is_admin',)
     ordering = ('username',)
+
+admin.site.register(User, UserAdmin)
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):

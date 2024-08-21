@@ -94,12 +94,9 @@ class RegisterView(View):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(
-                request, 'Your account has been created successfully. You can now log in.')
+            messages.success(request, 'Registration successful. You can now log in.')
             return redirect('login')
-            # Re-render the form with error messages if the form is invalid
         return render(request, 'core/register.html', {'form': form})
-
 
 class LogoutConfirmView(LoginRequiredMixin, View):
     template_name = 'core/logout-confirm.html'
